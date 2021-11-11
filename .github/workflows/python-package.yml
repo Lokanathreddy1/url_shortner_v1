@@ -18,4 +18,4 @@ jobs:
         run: |
           pipenv install pytest
           pipenv install --dev
-          pipenv run pytest /home/runner/work/url_shortner_v1/tests/
+          pipenv run pytest .
