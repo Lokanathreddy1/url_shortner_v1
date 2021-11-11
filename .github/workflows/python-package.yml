@@ -1,6 +1,10 @@
 name: Python application
 
-on: [push]
+on: 
+  push: 
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
@@ -8,13 +12,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Set up Python 3.7
+      - name: Set up Python 3.8
         uses: actions/setup-python@v1
         with:
-          python-version: 3.7
+          python-version: 3.8
       - name: Install pipenv
-        run: pip install pipenv
+        run: |
+          pip install pipenv
+          pip install pytest
       - name: Run tests
         run: |
+          pipenv install pytest
           pipenv install --dev
           pipenv run pytest
