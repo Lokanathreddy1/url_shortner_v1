@@ -1,6 +1,10 @@
 name: Python application
 
-on: [push]
+on: 
+  push: 
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
@@ -13,9 +17,11 @@ jobs:
         with:
           python-version: 3.8
       - name: Install pipenv
-        run: pip install pipenv
+        run: |
+          pip install pipenv
+          pip install pytest
       - name: Run tests
         run: |
           pipenv install pytest
           pipenv install --dev
-          pipenv run pytest .
+          pipenv run pytest
