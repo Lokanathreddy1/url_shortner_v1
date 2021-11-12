@@ -10,4 +10,4 @@ def test_url_shortener():
     print(os.getenv("abcd"))
     print(os.getenv("cd"))
     assert result == 30
-    assert os.getenv("abcd") == 1234
+    assert os.getenv("abcd") == "1234"
