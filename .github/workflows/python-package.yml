@@ -20,6 +20,11 @@ jobs:
         run: |
           pip install pipenv
           pip install pytest
+      - name: Do Something with env files
+        env:
+          QA_ENV_FILE: ${{ secrets.TESTING }}
+        run: |
+          echo $QA_ENV_FILE | base64 --decode > .env
       - name: Run tests
         run: |
           pipenv install pytest
